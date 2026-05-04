@@ -15,22 +15,24 @@
     </div>
   </form>
 
-  <table class="table table-bordered table-striped">
-    <tr class="table-dark">
-      <th>Name</th><th>Email</th><th>Course</th><th>Actions</th>
-    </tr>
-    <?php foreach($students ?? [] as $s): ?>
-    <tr>
-      <td><?= $s['name'] ?></td>
-      <td><?= $s['email'] ?></td>
-      <td><?= $s['course'] ?></td>
-      <td>
-        <a href="/students/edit/<?= $s['id'] ?>" class="btn btn-sm btn-warning">Edit</a>
-        <a href="/students/delete/<?= $s['id'] ?>" class="btn btn-sm btn-danger" onclick="return confirm('Delete?')">Delete</a>
-      </td>
-    </tr>
-    <?php endforeach; ?>
-  </table>
+ <table class="table table-bordered table-striped">
+  <tr class="table-dark">
+    <th>Name</th><th>Email</th><th>Course</th><th>Actions</th>
+  </tr>
+  <?php foreach($students as $s): ?>
+  <tr>
+    <td><?= $s['name'] ?></td>
+    <td><?= $s['email'] ?></td>
+    <td><?= $s['course'] ?></td>
+    <td>
+      <a href="/students/edit/<?= $s['id'] ?>" class="btn btn-sm btn-warning">Edit</a>
+      <a href="/students/delete/<?= $s['id'] ?>" class="btn btn-sm btn-danger" 
+         onclick="return confirm('Delete?')">Delete</a>
+    </td>
+  </tr>
+  <?php endforeach; ?>
+</table>
+
   <?php if (isset($pager)): ?>
     <?= $pager->links() ?>
   <?php endif; ?>
